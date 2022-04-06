@@ -1,0 +1,125 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title GoldMiner
+
+class Function {
++power()
++AddScoresIfStone()
++AddScoresIfMysteryBag()
++ADdScoresIfDiamondLiquid()
++addFirecrakerNumber()
+
+}
+
+class Gold {
+-LitGold : Integer
+-MidGold : Integer
+-BigGold : Integer
++drawLitGold()
++drawMidGold()
++drawBigGold()
+}
+
+class Rock {
+-LitRock : Integer
+-MidRock : Integer
+-BigRock : Integer
++drawLitRock()
++drawMidRock()
++drawBigRock()
+}
+
+class Diamondmouse {
+-Diamond : Integer
+-Mousecanmove : Integer
+-Movemouse&Diamond : Integer
++drawDiamond()
++drawMousecanmove()
++Movemouse&Diamond()
+}
+
+class otherobjects {
+-MysteryBag : Integer
+-Bomb : Integer
+-Ghost : Integer
++drawMysteryBag()
++drawBomb()
++drawFirecraker()
++drawGhost()
+}
+
+
+class GameStartScreen {
++drawGameStartScreen()
+}
+
+class GameEndScreen {
++drawGameEndScreen()
++EndGame()
+}
+
+class LevelsScreen {
++Scores : Integer
++numberOfFirecraker : Integer
++drawLevelsScreen()
++drawFirecraker()
++drawAimScores()
++drawGrab()
++AddScores&DrawScores() : Operation
++PlayGamebyKeyborad() : Operation
++ClearAbilityFromStore()
+}
+
+class ShopScreen {
+-luckyleave : Integer
+-ShopFirecraker : Integer
+-PowerLiquid : Integer
+-BookofStone : Integer
+-BookOfDiamond : Integer
++drawluckyleave()
++drawShopFirecraker()
++drawPowerLiquid()
++drawBookofStone()
++drawDiamondLiquid()
++drawShopBackground()
++UseFunction() : Function
+}
+
+class WinlevelScreen {
++drawWinScreen()
+}
+
+
+class Operation {
++Grab() : Function
++UseFirecraker()
++TimeLimitation()
++BoomresultIfGrabBomb()
++Quit()
+}
+class Entity {
+
+}
+class Screens {
+
+}
+class Game {
+-currentscreen : Integer
++setScreen()
+}
+Entity <|-- Gold
+Entity <|-- Rock
+Entity <|-- Diamondmouse
+Entity <|-- otherobjects
+Screens"1" --> "*"Entity
+Screens <|-- LevelsScreen
+Screens <|-- ShopScreen
+Screens <|-- GameStartScreen
+Screens <|-- GameEndScreen
+Screens <|-- WinlevelScreen
+LevelsScreen"*" --> "1"Operation
+ShopScreen"1" --> "1"Function
+Operation"1" --> "1"Function
+Game <-- Screens
+@enduml
