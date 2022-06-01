@@ -13,25 +13,25 @@ Objects <|-- Bag
 Screens --> Objects
 
 class Gold {
--Gold : Gold,GoldMini,GoldPlus
+
 
 }
 
 class Rock {
--rock : Rock
+
 }
 
 
 class Water {
--water:Water
+
 }
 
 class Diamond {
--diamond:Diamond
+
 }
 
 class Bag {
--bag:Bag
+
 }
 
 
@@ -79,7 +79,7 @@ class Background {
 
 -level:int
 -targetScore:int
--MyScore:int
+-myScore:int
 -numOfWater:int
 -waterFlag:boolean
 -numOfFire:int
