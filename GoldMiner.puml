@@ -3,123 +3,103 @@
 
 title GoldMiner
 
-class Function {
-+power()
-+AddScoresIfStone()
-+AddScoresIfMysteryBag()
-+ADdScoresIfDiamondLiquid()
-+addFirecrakerNumber()
-
-}
+Screens --> HookAndLine
+Screens --> Background
+Objects <|-- Gold
+Objects <|-- Rock
+Objects <|-- Water
+Objects <|-- Diamond
+Objects <|-- Bag
+Screens --> Objects
 
 class Gold {
--LitGold : Integer
--MidGold : Integer
--BigGold : Integer
-+drawLitGold()
-+drawMidGold()
-+drawBigGold()
+-Gold : Gold,GoldMini,GoldPlus
+
 }
 
 class Rock {
--LitRock : Integer
--MidRock : Integer
--BigRock : Integer
-+drawLitRock()
-+drawMidRock()
-+drawBigRock()
-}
-
-class Diamondmouse {
--Diamond : Integer
--Mousecanmove : Integer
--Movemouse&Diamond : Integer
-+drawDiamond()
-+drawMousecanmove()
-+Movemouse&Diamond()
-}
-
-class otherobjects {
--MysteryBag : Integer
--Bomb : Integer
--Ghost : Integer
-+drawMysteryBag()
-+drawBomb()
-+drawFirecraker()
-+drawGhost()
+-rock : Rock
 }
 
 
-class GameStartScreen {
-+drawGameStartScreen()
+class Water {
+-water:Water
 }
 
-class GameEndScreen {
-+drawGameEndScreen()
-+EndGame()
+class Diamond {
+-diamond:Diamond
 }
 
-class LevelsScreen {
-+Scores : Integer
-+numberOfFirecraker : Integer
-+drawLevelsScreen()
-+drawFirecraker()
-+drawAimScores()
-+drawGrab()
-+AddScores&DrawScores() : Operation
-+PlayGamebyKeyborad() : Operation
-+ClearAbilityFromStore()
-}
-
-class ShopScreen {
--luckyleave : Integer
--ShopFirecraker : Integer
--PowerLiquid : Integer
--BookofStone : Integer
--BookOfDiamond : Integer
-+drawluckyleave()
-+drawShopFirecraker()
-+drawPowerLiquid()
-+drawBookofStone()
-+drawDiamondLiquid()
-+drawShopBackground()
-+UseFunction() : Function
-}
-
-class WinlevelScreen {
-+drawWinScreen()
+class Bag {
+-bag:Bag
 }
 
 
-class Operation {
-+Grab() : Function
-+UseFirecraker()
-+TimeLimitation()
-+BoomresultIfGrabBomb()
-+Quit()
+class HookAndLine {
+-x:int
+-y:int
+-endX:int
+-endY:int
+-minLength:int
+-maxLength:int
+-n:double
+-direction:int
+-status:int
+-judge:boolean
++collisionDete():void
++drawLineAndHook():void
++paint():void
++reStart():void
 }
-class Entity {
 
+class Objects {
+-x: int
+-y:int
+-length:int
+-width:int
+-image:Image
+-flag:boolean
+-weight:int
+-score:int
+-type:int
++paintself():void
++getwidth():int
++getRec():Rectangle
 }
+
 class Screens {
+-state:int
++setObjects():void
++paint():void
++setScreen():void
++judgeWhichScreens():void
+}
 
+class Background {
+
+-level:int
+-targetScore:int
+-MyScore:int
+-numOfWater:int
+-waterFlag:boolean
+-numOfFire:int
+-fireFlag:boolean
+-x1:int
+-x2:int
+-y1:int
+-y2:int
+-bookStoneFlag:boolean
+-DiamondFlag:boolean
+-Buying1:boolean
+-Buying2:boolean
+-Usingwater:boolean
+-Usingfire:boolean
+-startTime:int
+-endTime:int
++paintself():void
++gameTimeEnd():boolean
++reStart():void
++printWordOnGui():void
 }
-class Game {
--currentscreen : Integer
-+setScreen()
-}
-Entity <|-- Gold
-Entity <|-- Rock
-Entity <|-- Diamondmouse
-Entity <|-- otherobjects
-Screens"1" --> "*"Entity
-Screens <|-- LevelsScreen
-Screens <|-- ShopScreen
-Screens <|-- GameStartScreen
-Screens <|-- GameEndScreen
-Screens <|-- WinlevelScreen
-LevelsScreen"*" --> "1"Operation
-ShopScreen"1" --> "1"Function
-Operation"1" --> "1"Function
-Game <-- Screens
+
 @enduml
